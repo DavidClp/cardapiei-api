@@ -18,6 +18,7 @@ const create = async function(req, res, next){
         /* GAMBIRRA, CONSERTAR QUANDO FRONT END ESTIVER PRONTO */
 
         const token = response.token;
+        console.log("USUARIO CRIADO: " + response.usuario.nome)
         res.send({ token, ...response });
     } catch (error) {
         return next(error);
@@ -35,7 +36,7 @@ const login = async function(req, res, next){
         if(response && response.message){
             throw response;
         }
-        console.log(response.token)
+        console.log("USUARIO (" + response.usuario.nome + ") LOGOU")
         res.send(response)
     } catch (error) {
         return next(error);

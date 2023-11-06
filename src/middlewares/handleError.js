@@ -14,7 +14,8 @@ const handleError = function(error, req, res, next){
     const errors = mountError(error);
 
     res.status(error.status || 500);
-    res.json(errors)
+    console.log("ERRO GERADO: " + error)
+    res.json(errors);
 }
 
 module.exports = handleError

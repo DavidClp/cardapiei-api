@@ -9,6 +9,17 @@ const criarURL = (nomeEstabelecimento, thereEst) => {
 
     return url
 }
+const atualizarURL = (nomeEstabelecimento, thereEst) => {
+    let url;
+    if(thereEst){
+        randomCode = generateRandomString(5);
+        url =  nomeEstabelecimento.replace(/\s/g, '-') + "-" + randomCode;
+    } else{
+        url =  nomeEstabelecimento.replace(/\s/g, '-');
+    }
+
+    return url
+}
 
 function generateRandomString(length) {
     if (length < 3) {
@@ -35,5 +46,6 @@ function generateRandomString(length) {
 
 
 module.exports = {
-    criarURL
+    criarURL,
+    atualizarURL
 }

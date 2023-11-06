@@ -18,32 +18,12 @@ const create = async function(req, res, next){
         if(response && response.message){
             throw response;
         }
-
+        console.log("ESTABELECIMENTO CRIADO: " + response.nome)
         res.send(response);
     } catch (error) {
         return next(error);
     }
 }
-
-/* const create = async function(req, res, next){
-    try {
-        const errors = validationResult(req);
-        if(!errors.isEmpty()){
-            throw createError(422, {errors: errors.array()});
-        }
-      
-        const response = await estabelecimentoService.create({ */
-          /*   nome: req.body.nome,
-            descricao: req.body.descricao,
-            logo: req.body.logo, */
-          /*   usu_id: req.usuario_id
-        });
- */
-   /*      next();
-    } catch (error) {
-        return next(error);
-    } */
-/* } */ 
 
 const update = async function(req, res, next){
     try {

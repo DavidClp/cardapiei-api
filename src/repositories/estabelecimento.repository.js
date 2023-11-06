@@ -28,6 +28,7 @@ const updateById = async function (estabelecimento, id) {
     nome: estabelecimento.nome ?? undefined,
     descricao: estabelecimento.descricao ?? undefined,
     logo: estabelecimento.logo ?? undefined,
+    url: estabelecimento.url ?? undefined,
   };
   await Estabelecimento.update(fieldsToUpdate, {
     where: { id: id },
@@ -83,7 +84,7 @@ const findByWhereComTudo = async function (where) {
     return estabelecimento;
   } catch (error) {
     // Lide com erros, por exemplo, lançando ou registrando-os
-    console.log(error);
+    console.log("ERROR BUSCAR CARDAPIO: " + error);
     throw error;
   }
 };

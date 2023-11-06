@@ -3,7 +3,6 @@ const createError = require('http-errors')
 
 const create = async function(categoria){
     const categoriaCriado = await categoriaRepository.create(categoria);
-    console.log(categoriaCriado)
     return categoriaCriado;
 }
 
