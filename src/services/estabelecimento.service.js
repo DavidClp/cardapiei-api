@@ -24,11 +24,15 @@ const update =  async function(estabelecimento, usu_id){
 
 const updateById =  async function(estabelecimento, id){
     const thereIsEstabelecimento = await estabelecimentoRepository.findById(id)
-    const thereEst = await estabelecimentoRepository.findOneByWhere({nome: estabelecimento.nome});
+
     if(!thereIsEstabelecimento){
         return createError(404, 'Estabelecimento não existe');
     }
-    estabelecimento.url = criarURL.atualizarURL(estabelecimento.nome, thereEst);
+    
+    if (estabelecimento.nome !== thereIsEstabelecimento.nome) {
+        const thereEst = await estabelecimentoRepository.findOneByWhere({nome: estabelecimento.nome});
+        estabelecimento.url = criarURL.atualizarURL(estabelecimento.nome, thereEst);
+    }
 
     await estabelecimentoRepository.updateById(estabelecimento, id)
 
@@ -60,7 +64,7 @@ const findByUserId = async function(id){
 const findByUrl = async function(estabelecimentoUrl){
     const estabelecimento = await estabelecimentoRepository.findByWhereComTudo({url: estabelecimentoUrl});
     if(!estabelecimento){
-        return createError(404, "Estabelecimento não encontrado")
+        return createError(404, "Estabelecimento não encontrado"+estabelecimentoUrl)
     }
 
     return estabelecimento;

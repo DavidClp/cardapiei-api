@@ -39,6 +39,7 @@ const uploadImagem = (req, res, next) => {
         req.file.firebaseUrl = `https://storage.googleapis.com/${BUCKET}/img_produtos/${nomeArquivo}`;
         next();
     });
+
     // Use o Sharp para redimensionar e converter para WebP
     sharp(imagem.buffer)
        // .resize(600, 600) // Redimensionar para 800x600 pixels (substitua pelos valores desejados)

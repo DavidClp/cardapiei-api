@@ -52,6 +52,7 @@ const updateById = async function(req, res, next){
         if(!errors.isEmpty()){
             throw createError(422, { errors: errors.array() })
         }
+
         const response = await estabelecimentoService.updateById({
             nome: req.body.nome,
             descricao: req.body.descricao,
@@ -124,6 +125,12 @@ const findByUrl = async function(req, res, next){
         if(response && response.message){
             throw response;
         }
+
+        response?.horario_atendimentos?.map((horario) =>{
+            horario.dataValues.hor_abre = horario.dataValues.hor_abre.substring(0, 5);
+            horario.dataValues.hor_fecha = horario.dataValues.hor_fecha.substring(0, 5);
+        })
+
         res.send(response);
     } catch (error) {
         next(error);
@@ -140,6 +147,8 @@ const findUrl = async function(req, res, next){
         if(response && response.message){
             throw response;
         }
+
+
         res.send(response.url);
     } catch (error) {
         next(error);

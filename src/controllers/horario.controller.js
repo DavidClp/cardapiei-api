@@ -89,6 +89,10 @@ const findByEstId = async function(req, res, next){
             throw response;
         }
 
+        response.map((horario) =>{
+            horario.dataValues.hor_abre = horario.dataValues.hor_abre.substring(0, 5);
+            horario.dataValues.hor_fecha = horario.dataValues.hor_fecha.substring(0, 5);
+        })
         res.send(response);
     } catch (error) {
         next(error);
