@@ -63,27 +63,27 @@ const findByWhereComDados = async function (where) {
 const findByWhereComTudo = async function (where) {
   try {
     const estabelecimento = await Estabelecimento.findOne({
-      where: where, // Condição para a tabela Estabelecimento
+      where: where, 
       include: [
         {
           model: Categoria,
           where: {ativo: 1},
+          required: false,
           include: [
             {
               model: Produto,
               where: { ativo: 1 },
+              required: false,
             },
           ],
         },
-        Localizacao,
+       Localizacao ,
         Contato,
         horario_atendimento,
       ],
     });
-
     return estabelecimento;
   } catch (error) {
-    // Lide com erros, por exemplo, lançando ou registrando-os
     console.log("ERROR BUSCAR CARDAPIO: " + error);
     throw error;
   }

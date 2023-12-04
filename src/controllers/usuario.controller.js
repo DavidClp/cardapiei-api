@@ -36,6 +36,13 @@ const login = async function(req, res, next){
         if(response && response.message){
             throw response;
         }
+
+        delete response.usuario.senha;
+        delete response.usuario.id;
+        delete response.usuario.createdAt;
+        delete response.usuario.updatedAt;
+        delete response.usuario.deletedAt;
+
         console.log("USUARIO (" + response.usuario.nome + ") LOGOU")
         res.send(response)
     } catch (error) {

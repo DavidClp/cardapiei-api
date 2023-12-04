@@ -64,7 +64,7 @@ const findByUserId = async function(id){
 const findByUrl = async function(estabelecimentoUrl){
     const estabelecimento = await estabelecimentoRepository.findByWhereComTudo({url: estabelecimentoUrl});
     if(!estabelecimento){
-        return createError(404, "Estabelecimento não encontrado"+estabelecimentoUrl)
+        return createError(404, "Estabelecimento não encontrado " + estabelecimentoUrl)
     }
 
     return estabelecimento;

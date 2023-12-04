@@ -136,6 +136,7 @@ const findByUrl = async function(req, res, next){
         next(error);
     }
 }
+
 const findUrl = async function(req, res, next){
     try {
         const errors = validationResult(req);
@@ -147,7 +148,6 @@ const findUrl = async function(req, res, next){
         if(response && response.message){
             throw response;
         }
-
 
         res.send(response.url);
     } catch (error) {
