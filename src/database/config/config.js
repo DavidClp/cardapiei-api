@@ -14,8 +14,7 @@ module.exports = {
         },
         timezone: '-04:00'
     },  */
-    //production
-    development: {
+    production: {
         username: process.env.PRODUCTION_DATABASE_USER,
         password: process.env.PRODUCTION_PASSWORD,
         database: process.env.PRODUCTION_DATABASE,

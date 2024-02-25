@@ -18,7 +18,7 @@ const update = function(){
 
 const findById = function(){
     return[
-        param('proId', validatorMessage('proId')).exists().bail().isInt()
+        param('id', validatorMessage('Id')).exists().bail().isInt()
     ]
 }
 const findByEstId = function(){

@@ -121,19 +121,11 @@ const findByUrl = async function(req, res, next){
             throw createError(422, {errors: errors.array()});
         }
         
-        const response = await estabelecimentoService.findByUrl(req.params.estUrl);
+        const response = await estabelecimentoService.findByUrl(req.params.estabelecimento);
         if(response && response.message){
             throw response;
         }
-      
-        //tranforma valor em number
-        response?.Categoria?.map((categoria) =>{
-           categoria.dataValues.Produtos.map((produto) =>{
-               produto.dataValues.valor = parseFloat(produto.dataValues.valor)
-           })
-        })
-    
-        //arruma horario
+
         response?.horario_atendimentos?.map((horario) =>{
             horario.dataValues.hor_abre = horario.dataValues.hor_abre.substring(0, 5);
             horario.dataValues.hor_fecha = horario.dataValues.hor_fecha.substring(0, 5);
