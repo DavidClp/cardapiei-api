@@ -18,7 +18,7 @@ router.get('/geral/all', veriftJWT, estabelecimentoController.findAll);
 
 router.get('/user/', veriftJWT, estabelecimentoController.findByUserId);
 
-router.get('/:estabelecimento', estabelecimentoController.findByUrl);
+router.get('/:estUrl', estabelecimentoController.findByUrl);
 
 router.get('/geral/:id', veriftJWT, estabelecimentoValidator.findById(), estabelecimentoController.findById);
 
