@@ -18,7 +18,7 @@ router.get('/all', veriftJWT, produtoController.findAll);
 
 router.get('/:id', veriftJWT, produtoController.findByCatId);
 
-router.get('/geral/:proId', produtoValidator.findById(), produtoController.findById);
+router.get('/geral/:id', veriftJWT, produtoValidator.findById(), produtoController.findById);
 
 router.put('/:id', veriftJWT, Multer.single("imagem"), uploadImagem, produtoController.update);
 

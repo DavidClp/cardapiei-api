@@ -103,12 +103,10 @@ const findById = async function(req, res, next){
             throw createError(422, {errors: errors.array()});
         }
         
-        const response = await produtoService.findById(req.params.proId);
+        const response = await produtoService.findById(req.params.id);
         if(response && response.message){
             throw response;
         }
-
-        response.valor = Number(response.valor)
 
         res.send(response);
     } catch (error) {
