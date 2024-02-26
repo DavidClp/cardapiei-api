@@ -14,6 +14,8 @@ const localizacaoRoute = require('./src/routes/localizacao.route');
 const contatoRoute = require('./src/routes/contato.route');
 const horarioRoute = require('./src/routes/horario.route');
 
+const configuracaoRoute = require('./src/routes/configuracao.route');
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cors({
@@ -35,6 +37,7 @@ app.use('/api/produtos', produtoRoute);
 app.use('/api/localizacao', localizacaoRoute);
 app.use('/api/contatos', contatoRoute);
 app.use('/api/horarios', horarioRoute);
+app.use('/api/configuracao', configuracaoRoute);
 
 app.use(handle404Error);
 app.use(handleError);
