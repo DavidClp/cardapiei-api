@@ -5,27 +5,27 @@ const create = async function(Cfg){
     return ConfiguracaoCriado;
 }
 
-const update = async function(Configuracao, cfgId){
-    await Configuracao.update(Configuracao, {
+const update = async function(cfg, cfgId){
+    await Configuracao.update(cfg, {
         where: {cfg_id: cfgId}
     });
 }
 
 const findAll = async function(){
-    const Configuracaos = await Configuracao.findAll();
-    return Configuracaos;
+    const response = await Configuracao.findAll();
+    return response;
 }
 
 const findById = async function(cfgId){
-    const Configuracao = await Configuracao.findByPk(cfgId);
-    return Configuracao;
+    const response = await Configuracao.findByPk(cfgId);
+    return response;
 }
 
 const findOneByWhere = async function(where){
-    const Configuracao = await Configuracao.findOne({
+    const response = await Configuracao.findOne({
         where: where
     });
-    return Configuracao;
+    return response;
 }
 
 const findAllByWhere = async function(where){

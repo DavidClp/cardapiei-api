@@ -7,7 +7,7 @@ const create = async function(configuracao){
 }
 
 const update =  async function(configuracao, cfgId){
-    const thereIsEstabelecimento = await configuracaoRepository.findById(id)
+    const thereIsEstabelecimento = await configuracaoRepository.findById(cfgId)
     if(!thereIsEstabelecimento){
         return createError(404, 'configuracao não existe');
     }
