@@ -63,14 +63,17 @@ const findByWhereComDados = async function (where) {
 const findByWhereComTudo = async function (where) {
   try {
     const estabelecimento = await Estabelecimento.findOne({
+      attributes: ['nome', 'descricao', 'logo'],
       where: where, 
       include: [
         {
           model: Categoria,
+          attributes: ['id', 'nome'],
           where: {ativo: 1},
           required: false,
           include: [
             {
+              attributes: ['nome', 'descricao', 'cat_id', 'valor', 'imagem'],
               model: Produto,
               where: { ativo: 1 },
               required: false,
