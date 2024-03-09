@@ -36,19 +36,38 @@ const updateByEstId = async function(req, res, next){
         if(!errors.isEmpty()){
             throw createError(422, { errors: errors.array() })
         }
-        
-        const response = await localizacaoService.update({
-            cep: req.body.cep,
-            endereco: req.body.endereco,
-            numero: req.body.numero,
-            bairro: req.body.bairro,
-            cidade: req.body.cidade,
-        }, req.params.id);
-        if(response && response.message){
-            throw response;
-        }
 
-        res.send(response)
+        const estId = req.params.id;
+        const localizacao = await localizacaoService.findByEstId(estId);
+        if(localizacao){
+            const response = await localizacaoService.create({
+                cep: req.body.cep,
+                endereco: req.body.endereco,
+                numero: req.body.numero,
+                bairro: req.body.bairro,
+                cidade: req.body.cidade,
+                est_id: req.params.id
+            });
+            if(response && response.message){
+                throw response;
+            }
+    
+            res.send(response)
+        } else{
+            const response = await localizacaoService.update({
+                cep: req.body.cep,
+                endereco: req.body.endereco,
+                numero: req.body.numero,
+                bairro: req.body.bairro,
+                cidade: req.body.cidade,
+            }, req.params.id);
+            if(response && response.message){
+                throw response;
+            }
+    
+            res.send(response)
+        }
+    
     } catch (error) {
         return next(error);
     }
@@ -60,14 +79,14 @@ const updateById = async function(req, res, next){
         if(!errors.isEmpty()){
             throw createError(422, { errors: errors.array() })
         }
-        
+
         const response = await localizacaoService.updateById({
             cep: req.body.cep,
             endereco: req.body.endereco,
             numero: req.body.numero,
             bairro: req.body.bairro,
             cidade: req.body.cidade,
-        }, req.params.id);
+        }, estId);
         if(response && response.message){
             throw response;
         }
