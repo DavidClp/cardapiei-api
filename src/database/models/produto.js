@@ -21,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
     valor: DataTypes.DECIMAL,
     imagem: DataTypes.STRING,
     ativo: DataTypes.INTEGER,
+    ordem: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Produto',

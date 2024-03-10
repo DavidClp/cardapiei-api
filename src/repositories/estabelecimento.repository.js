@@ -73,10 +73,12 @@ const findByWhereComTudo = async function (where) {
           required: false,
           include: [
             {
-              attributes: ['id', 'nome', 'descricao', 'cat_id', 'valor', 'imagem'],
+              separate: true,
+              order: [['ordem', 'ASC']],
+              attributes: ['id', 'nome', 'descricao', 'cat_id', 'valor', 'imagem', 'ordem'],
               model: Produto,
               where: { ativo: 1 },
-              required: false,
+              required: true,
             },
           ],
         },

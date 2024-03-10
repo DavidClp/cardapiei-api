@@ -23,9 +23,9 @@ const update =  async function(produto, id){
     if(!thereIsProduto){
         return createError(404, 'Produto não existe');
     }
-    await produtoRepository.update(produto, id)
+    await produtoRepository.update(produto, id) 
 
-    /* return await produtoRepository.findById(id) */
+    //return await produtoRepository.findById(id)
 }
 
 const updateSituacao =  async function(produto, id){

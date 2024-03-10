@@ -6,11 +6,13 @@ const create = async function(produto){
 }
 
 const update = async function(produto, id) {
+    // TODO: verificar pq eu fiz assim???
     const fieldsToUpdate = {
       nome: produto.nome ?? undefined,
       valor: produto.valor ?? undefined,
       descricao: produto.descricao ?? undefined,
       imagem: produto.imagem ?? undefined,
+      ordem: produto.ordem ?? undefined,
       ativo: produto.ativo ?? undefined,
     };
   
@@ -37,7 +39,7 @@ const findOneByWhere = async function(where){
 
 const findAllByWhere = async function(where){
     const produto = await Produto.findAll({
-        where: where
+        where: where,
     });
     return produto;
 }

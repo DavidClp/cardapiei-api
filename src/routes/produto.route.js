@@ -14,7 +14,7 @@ const Multer = multer({
 
 router.post('/:cat_id', veriftJWT, Multer.single("imagem"), uploadImagem, produtoController.create);
 
-router.get('/all', veriftJWT, produtoController.findAll);
+router.get('/all', produtoController.findAll);
 
 router.get('/:id', veriftJWT, produtoController.findByCatId);
 
