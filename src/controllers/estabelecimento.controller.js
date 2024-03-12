@@ -1,5 +1,7 @@
 const { validationResult } = require("express-validator");
 const estabelecimentoService = require("../services/estabelecimento.service");
+const produtoService = require("../services/produto.service");
+const categoriaService = require("../services/categoria.service");
 const createError = require("http-errors");
 
 const create = async function (req, res, next) {
@@ -18,6 +20,25 @@ const create = async function (req, res, next) {
     if (response && response.message) {
       throw response;
     }
+
+    // cria 1 categoria e 1 produto teste
+    const responseCategoria = await categoriaService.create({
+      nome: "Categoria de teste",
+      est_id: response.id,
+      ativo: 1,
+    });
+
+    if (responseCategoria.id) {
+      await produtoService.create({
+        cat_id: responseCategoria.id,
+        nome: "Produto Teste",
+        descricao: "Produto para você testar como é seu cardápio no primeiro momento",
+        valor: 19.99,
+        ativo: 1,
+        ordem: 1
+      })
+    }
+
     console.log("ESTABELECIMENTO CRIADO: " + response.nome);
     res.send(response);
   } catch (error) {
