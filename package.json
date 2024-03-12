@@ -28,6 +28,8 @@
     "webp-converter": "^2.3.3"
   },
   "devDependencies": {
-    "sequelize-cli": "^6.6.1"
+    "@types/node": "^20.11.25",
+    "sequelize-cli": "^6.6.1",
+    "typescript": "^5.4.2"
   }
 }
