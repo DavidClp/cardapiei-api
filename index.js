@@ -15,6 +15,7 @@ const contatoRoute = require('./src/routes/contato.route');
 const horarioRoute = require('./src/routes/horario.route');
 
 const configuracaoRoute = require('./src/routes/configuracao.route');
+const testeRoute = require('./src/routes/teste.route');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -30,6 +31,7 @@ app.use(cors({
 }));
  */
 /* app.use('/api/token', tokenRoute); */
+
 app.use('/api/usuarios', usuarioRoute);
 app.use('/api/estabelecimentos', estabelecimentoRoute);
 app.use('/api/categorias', categoriaRoute);
@@ -38,6 +40,7 @@ app.use('/api/localizacao', localizacaoRoute);
 app.use('/api/contatos', contatoRoute);
 app.use('/api/horarios', horarioRoute);
 app.use('/api/configuracao', configuracaoRoute);
+app.use('/api/ping', testeRoute);
 
 app.use(handle404Error);
 app.use(handleError);
